@@ -48,7 +48,7 @@ def to_polar_coords(x_pixel, y_pixel):
     # in polar coordinates in rover space
     # Calculate distance to each pixel
     dist = np.sqrt(x_pixel**2 + y_pixel**2)
-    # Calculate angle away from vertical for each pixel
+    # Calculate angle in radians away from vertical for each pixel
     angles = np.arctan2(y_pixel, x_pixel)
     return dist, angles
 
@@ -131,7 +131,13 @@ def perception_step(Rover):
     lower_yellow = np.array([20, 20, 100])
     upper_yellow = np.array([255, 255, 205])
     rock_sample = color_thresh_rock_sample(warped, lower_yellow=lower_yellow, upper_yellow=upper_yellow)
-    
+    # plt.subplot(311)
+    # plt.imshow(navigable_terrain)
+    # plt.subplot(312)
+    # plt.imshow(obstacle_terrain)
+    # plt.subplot(313)
+    # plt.imshow(rock_sample)
+    # plt.show()
     # 4) Update Rover.vision_image (this will be displayed on left side of screen)
         # Example: Rover.vision_image[:,:,0] = obstacle color-thresholded binary image
     #          Rover.vision_image[:,:,1] = rock_sample color-thresholded binary image
@@ -157,9 +163,11 @@ def perception_step(Rover):
         # Example: Rover.worldmap[obstacle_y_world, obstacle_x_world, 0] += 1
         #          Rover.worldmap[rock_y_world, rock_x_world, 1] += 1
         #          Rover.worldmap[navigable_y_world, navigable_x_world, 2] += 1
-    Rover.worldmap[obstacle_y_world, obstacle_x_world, 0] += 1
-    Rover.worldmap[rock_y_world, rock_x_world, 1] += 1
-    Rover.worldmap[navigable_y_world, navigable_x_world, 2] += 1
+    # Make sure we are flat wrt earth b4 adding to worldmap
+    if Rover.pitch % 360 < Rover.good_angle and Rover.roll % 360 < Rover.good_angle:
+        Rover.worldmap[obstacle_y_world, obstacle_x_world, 0] += 1
+        Rover.worldmap[rock_y_world, rock_x_world, 1] += 1
+        Rover.worldmap[navigable_y_world, navigable_x_world, 2] += 1
        
     # 8) Convert rover-centric pixel positions to polar coordinates
     dist_to_obstacles, angles_to_obstacles = to_polar_coords(obstacle_x_rover, obstacle_y_rover)
@@ -171,6 +179,7 @@ def perception_step(Rover):
         # Rover.nav_angles = rover_centric_angles
     Rover.nav_dists = dist_to_navigable_terrain
     Rover.nav_angles = angles_to_navigable_terrain
-    
+    Rover.rock_dists = dist_to_rocks
+    Rover.rock_angles = angles_to_rocks
     
     return Rover
