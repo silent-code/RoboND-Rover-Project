@@ -29,14 +29,16 @@ Steps taken include:
 * Filled in the `decision_step()` function within the `decision.py` script with conditional statements that take into consideration the outputs of the `perception_step()` in deciding how to issue throttle, brake and steering commands. 
 * Iterated on the perception and decision function until the rover satisfied the autonomous navigation and mapping objectives of 40% environment mapping at 60% ground truth fidelity. 
 
+## [Rubric](https://review.udacity.com/#!/rubrics/916/view) Points
+### Next I consider the rubric points individually and describe how I addressed each point in my implementation.
+
 ### Notebook Analysis
 #### 1. Run the functions provided in the notebook on test images (first with the test data provided, next on data you have recorded). Add/modify functions to allow for color selection of obstacles and rock samples.
 Here is an example of how to include an image in your writeup. The next image shows the data I used to calibrate color selection functions for obstacle and navigable terrain and rock samples. The image shows demonstrates all three channels, including tracks which are calibrated out to be included in the navigable terrain channel.
 
 ![alt text][image1]
 
-## [Rubric](https://review.udacity.com/#!/rubrics/916/view) Points
-### Next I consider the rubric points individually and describe how I addressed each point in my implementation.
+
 
 #### 1. Populate the `process_image()` function with the appropriate analysis steps to map pixels identifying navigable terrain, obstacles and rock samples into a worldmap.  Run `process_image()` on your test data using the `moviepy` functions provided to create video output of your result. 
 And another! 
