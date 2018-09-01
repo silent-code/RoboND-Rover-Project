@@ -22,25 +22,25 @@ Steps taken include:
 * Filled in the `process_image()` function with the appropriate image processing steps (perspective transform, color threshold etc.) to get from raw images to a map.  The `output_image` test created in this step demonstrated that my mapping pipeline worked.
 * Finally I used the `moviepy' module to process the images in my saved test dataset with the `process_image()` function.  The final video, test_mapping.mp4', can be found in the output folder of this repository.
 
-**Autonomous Navigation / Mapping: Stage 2 of the RoboND Rover Project**
+**Stage 2 of the RoboND Rover Project: Autonomous Navigation / Mapping**
 
 Steps taken include:
-* Filled in the `perception_step()` function within the `perception.py` script with the appropriate image processing functions to create a map and update `Rover()` data (similar to what you did with `process_image()` in the notebook). 
-* Filled in the `decision_step()` function within the `decision.py` script with conditional statements that take into consideration the outputs of the `perception_step()` in deciding how to issue throttle, brake and steering commands. 
-* Iterated on the perception and decision function until the rover satisfied the autonomous navigation and mapping objectives of 40% environment mapping at 60% ground truth fidelity. 
+* Filled in the `perception_step()` function located inside the `perception.py` script with the appropriate image processing functions to create a map and update `Rover()`, the rover state class instantiation. 
+* Filled in the `decision_step()` function located in the `decision.py` script with conditional statements that utilize the outputs of the `perception_step()` to decide how to issue throttle, brake and steering commands. 
+* Iterated on the perception and decision function steps until the rover satisfied the autonomous navigation and mapping objectives of 40% environment mapping at 60% ground truth fidelity. 
 
 ## [Rubric](https://review.udacity.com/#!/rubrics/916/view) Points
 ### Next I consider the rubric points individually and describe how I addressed each point in my implementation.
 
 ### Notebook Analysis
-#### 1. I executed the functions provided in the notebook on test images (first with the test data provided, next on data that I with recorded in the simulator training mode). Next I added/modified functions to allow for color selection of obstacles and rock samples.
-The next image shows the data I used to calibrate color selection functions for obstacle and navigable terrain and rock samples. The image shows demonstrates all three channels, including tracks which are calibrated out to be included in the navigable terrain channel.
+#### 1. I executed the functions provided in the notebook on test images (first with the test data provided, next on data that I with recorded in the simulator training mode). Next I added/modified functions to allow for color selection of obstacles and rock samples. The next image shows the data I used to calibrate color selection functions for obstacle and navigable terrain and rock samples. The image shows demonstrates all three channels, including tracks which are calibrated out to be included in the navigable terrain channel.
 
 ![alt text][image1]
 
 
 
-#### 2. In step 2 of the Notebook Analysis, I populated the `process_image()` function with the appropriate analysis steps to map pixels identifying navigable terrain, obstacles and rock samples into a worldmap.  Next, I ran `process_image()` on the test data I collected using the `moviepy` functions provided to create video output of the result.  
+#### 2. In step 2 of the Notebook Analysis, I populated the `process_image()` function with the appropriate analysis steps to map pixels identifying navigable terrain, obstacles and rock samples into a worldmap.  Next, I ran `process_image()` on the test data I collected using the `moviepy` functions provided to create video output of the result. These steps were helpful in developing and debugging the auxiliary functions for the perception step.  
+
 
 ### Autonomous Navigation and Mapping
 
@@ -49,12 +49,11 @@ The next image shows the data I used to calibrate color selection functions for 
 
 #### 2. Launching in autonomous mode your rover can navigate and map autonomously.  Explain your results and how you might improve them in your writeup.  
 
-**Note: running the simulator with different choices of resolution and graphics quality may produce different results, particularly on different machines!  Make a note of your simulator settings (resolution and graphics quality set on launch) and frames per second (FPS output to terminal by `drive_rover.py`) in your writeup when you submit the project so your reviewer can reproduce your results.**
+**Note: running the simulator with different choices of resolution and graphics quality may produce different results, particularly on different machines!  Make a note of your graphics settings (2880x1800 native resolution at 220 ppi)  and frames per second (FPS output to terminal by `drive_rover.py`) in your writeup when you submit the project so your reviewer can reproduce your results.**
 
 Here I'll talk about the approach I took, what techniques I used, what worked and why, where the pipeline might fail and how I might improve it if I were going to pursue this project further.  
 
 
 
-![alt text][image3]
 
 
