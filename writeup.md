@@ -33,17 +33,15 @@ Steps taken include:
 ### Next I consider the rubric points individually and describe how I addressed each point in my implementation.
 
 ### Notebook Analysis
-#### 1. Run the functions provided in the notebook on test images (first with the test data provided, next on data you have recorded). Add/modify functions to allow for color selection of obstacles and rock samples.
-Here is an example of how to include an image in your writeup. The next image shows the data I used to calibrate color selection functions for obstacle and navigable terrain and rock samples. The image shows demonstrates all three channels, including tracks which are calibrated out to be included in the navigable terrain channel.
+#### 1. I executed the functions provided in the notebook on test images (first with the test data provided, next on data that I with recorded in the simulator training mode). Next I added/modified functions to allow for color selection of obstacles and rock samples.
+The next image shows the data I used to calibrate color selection functions for obstacle and navigable terrain and rock samples. The image shows demonstrates all three channels, including tracks which are calibrated out to be included in the navigable terrain channel.
 
 ![alt text][image1]
 
 
 
-#### 1. Populate the `process_image()` function with the appropriate analysis steps to map pixels identifying navigable terrain, obstacles and rock samples into a worldmap.  Run `process_image()` on your test data using the `moviepy` functions provided to create video output of your result. 
-And another! 
+#### 2. In step 2 of the Notebook Analysis, I populated the `process_image()` function with the appropriate analysis steps to map pixels identifying navigable terrain, obstacles and rock samples into a worldmap.  Next, I ran `process_image()` on the test data I collected using the `moviepy` functions provided to create video output of the result.  
 
-![alt text][image2]
 ### Autonomous Navigation and Mapping
 
 #### 1. Fill in the `perception_step()` (at the bottom of the `perception.py` script) and `decision_step()` (in `decision.py`) functions in the autonomous mapping scripts and an explanation is provided in the writeup of how and why these functions were modified as they were.
