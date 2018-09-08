@@ -44,20 +44,15 @@ Steps taken include:
 
 ### Autonomous Navigation and Mapping
 
-#### 1. Code modifications: As part of the project completion, I modified the `perception_step()` (at the bottom of the `perception.py` script) and `decision_step()` (in `decision.py`) functions provided in the autonomous mapping scaffold scripts. In the `perception_step()` I added a function to threshold on gold-colored rock samples and add these to the rover vision image and then added a similar image processing pipeline like that in the 2nd step of the Notebook Analysis above. This time however, I kept track of obstacles, navigable terrain and rocks at each step. One improvement that was required to obtain improved map fidelity was to only add  to the Rover.worldmap attribute if the vehicle's pitch and roll was less than +/- 1 degree with respect to horizontal. The `decision_step()` function worked as given and required no changes to meet the autonomous mode specifications of 40% terrain covered, 60% ground truth mapping fidelity and locating at least 2 rocks.
+#### 1. Code modifications: As part of the project completion, I modified the `perception_step()` (at the bottom of the `perception.py` script) and `decision_step()` (in `decision.py`) functions provided in the autonomous mapping scaffold scripts. In the `perception_step()` I added a function to threshold on gold-colored rock samples and add these to the rover vision image and then added a similar image processing pipeline like that in the 2nd step of the Notebook Analysis above. This time however, I kept track of obstacles, navigable terrain and rocks at each step. One improvement that was required to obtain improved map fidelity was to only add  to the Rover.worldmap attribute if the vehicle's pitch and roll was less than +/- 1 degree with respect to horizontal. The `decision_step()` function worked as given and required no changes to meet the autonomous mode specifications of 40% terrain covered, 60% ground truth mapping fidelity and locating at least 2 rocks. However, to improve time efficiency, I included a behavior for the rover to get unstuck whenever it's throttle was positive and its measured ground speed was non-zero.
 
 
 #### 2. Autonomous mode:  
-The project goal was to map terrain while avoiding obstacles and locating rocks. The approach I used to accomplish the objective utilized the technique 
+The project goal was to map terrain while avoiding obstacles and locating rocks. The approach I used to accomplish the objective utilized the technique of modifying code and simulating the rover behavior. This iterative technique worked best for cases where the modified behavior was more likely to arise quickly, e.g., modifying obstacle avoidance behavior so that code change effects could be observed more immediately. However in cases such as the rover getting stuck, the simulation approach was less efficient since this behavior was rare.
 
-what techniques I used:  
+In the perception pipeline, the weakest assumption in a real world situation is the thresholding based on color differences. Some type of template matching for rock identification could be used in situations where color was not a reliable feature. Stereo vision could be used to extract left-right and height estimates of terrain to identify navigable paths when color thresholding fails for monochromatic terrain.
 
-what worked and why: 
-
-where the pipeline might fail: In the perception pipeline, the weakest assumption in a real world situation is the thresholding based on color differences. Some type of template matching for rock identification could be used in situations where color was not a reliable feature. Stereo vision could be used to extract left-right and height estimates of terrain to identify navigable paths when color thresholding fails for monochromatic terrain.
-
-how I might improve it if I were going to pursue this project further:  
-Ideas for improvement: better navigable terrain indicator / rock detection, obstacle avoidance, use map for expedited coverage OA and rock dropoff, unstuck action, stop circling actrion, fasster reactive control to speed up coverage time.
+Ideas for improvement include developing more sophisticated navigable terrain, obstacle and rock detection algorithms as previously described. Also, instead of using the length of the navigable angles vector to estimate whether to continue or stop, it would be more accurate and efficient to path plan in the rover-centric image space, for example, moving in the direction of the longest ray trace in the rover-centric navigable terrain image. Using the world map to decide where to navigate would expedite coverage and improve obstacle avoidance and rock dropoff and eliminate the observed circling behavior at the map center.
 
 **Note: My graphics settings were 2880x1800 native resolution at 220 ppi and my frames per second was 40.**
 
