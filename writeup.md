@@ -31,13 +31,13 @@ Steps taken include:
 ### Next I consider the rubric points individually and describe how I addressed each point in my implementation.
 
 ### Notebook Analysis
-#### 1. In step 1 of the Notebook AnalysisI executed the functions provided in the notebook on test images: first with the test data provided, and then on data that I with recorded in the simulator training mode. Next I added/modified functions to allow for color selection of obstacles and rock samples. The next image shows the data I used to calibrate color selection functions for obstacles, navigable terrain and rock sample features. The image below shows a calibration image with each of the three types of features. The image includes the rover tracks which are calibrated to be included as a navigable terrain feature.
+#### 1. In step 1 of the Notebook Analysis I executed the functions provided in the notebook on test images: first with the test data provided, and then on data that I with recorded in the simulator training mode. Next I added/modified functions to allow for color selection of obstacles and rock samples. The next image shows the data I used to calibrate color selection functions for obstacles, navigable terrain and rock sample features. The image below shows a calibration image with each of the three types of features. The image includes the rover tracks which are calibrated to be included as a navigable terrain feature.
 
 ![alt text][image1]
 
 
 
-#### 2. In step 2 of the Notebook Analysis, I populated the `process_image()` function with the appropriate analysis steps to map pixels identifying navigable terrain, obstacles and rock samples into a worldmap.  Next, I ran `process_image()` on the test data I collected using the `moviepy` functions provided to create video output of the result. These steps were helpful in developing and debugging the auxiliary functions for the perception step.  
+#### 2. In step 2 of the Notebook Analysis I populated the `process_image()` function with the appropriate analysis steps to map pixels identifying navigable terrain, obstacles and rock samples into a worldmap.  Next, I ran `process_image()` on the test data I collected using the `moviepy` functions provided to create video output of the result. These steps were helpful in developing and debugging the auxiliary functions for the perception step.  
 
 
 ### Autonomous Navigation and Mapping
@@ -46,7 +46,7 @@ Steps taken include:
 
 
 #### 2. Autonomous mode:  
-The project goal was to map terrain while avoiding obstacles and locating rocks. The approach I used to accomplish the objective utilized the technique of modifying code and simulating the rover behavior. This iterative technique worked best for cases where the modified behavior was more likely to arise quickly, e.g., modifying obstacle avoidance behavior so that code change effects could be observed more immediately. However in cases such as the rover getting stuck, the simulation approach was less efficient since this behavior was rare.
+The project goal was to map terrain while avoiding obstacles and locating rocks. The approach I used to accomplish the objective utilized the technique of modifying code and simulating the rover behavior. This iterative technique worked best for cases where the modified behavior was more likely to arise quickly, e.g., modifying obstacle avoidance behavior so that code change effects could be observed more immediately. However in cases such as the rover getting stuck, the simulation approach was less efficient since this behavior was rarely observed.
 
 In the perception pipeline, the weakest assumption in a real world situation is the thresholding based on color differences. Some type of template matching for rock identification could be used in situations where color was not a reliable feature. Stereo vision could be used to extract left-right and height estimates of terrain to identify navigable paths when color thresholding fails for monochromatic terrain.
 
