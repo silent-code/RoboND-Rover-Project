@@ -11,8 +11,6 @@
 
 ### Here I briefly review the stages and steps of the project.  
 
-**The stages of this project were as follows:**  
-
 **Stage 1 of the RoboND Rover Project: Training / Calibration**  
 
 Steps taken include:
