@@ -1,6 +1,11 @@
-## Project: Search and Sample Return
 
- 
+ [image_0]: ./misc/rover_image.jpg
+
+# Search and Sample Return Project
+
+
+![alt text][image_0] 
+
 
 [//]: # (Image References)
 
